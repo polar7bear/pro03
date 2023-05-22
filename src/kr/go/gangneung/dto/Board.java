@@ -1,7 +1,7 @@
 package kr.go.gangneung.dto;
 
 public class Board {
-	private String bno;
+	private int bno;
 	private String btitle;
 	private String bcontent;
 	private String baddress;
@@ -12,10 +12,10 @@ public class Board {
 	private String bpic4;
 	private String cate;
 	
-	public String getBno() {
+	public int getBno() {
 		return bno;
 	}
-	public void setBno(String bno) {
+	public void setBno(int bno) {
 		this.bno = bno;
 	}
 	public String getBtitle() {

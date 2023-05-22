@@ -29,6 +29,18 @@ public class MySQL8 {
 	public final static String NOTICE_SELECT_ONE = "select * from notice where no=?";	//공지사항 상세보기
 	public final static String NOTICE_UPDATE_VISITED = "update notice set visited=visited+1 where no=?";	//공지사항 조회수 기능
 
+	//게시판 기능
+	public final static String BOARD_SELECT_CATE = "select * from board where cate=?";	//카테고리 소분류별 게시글 목록 불러오기
+	public final static String BOARD_SELECT_CATENAME = "select * from category where cate=?";
+	public final static String BOARD_SELECT_CATEGROUP = "select * from board where cate like '?%';"; //카테고리 대분류별 게시글 목록 불러오기
+	public final static String BOARD_SELECT_ONE = "select * from board where bno=?";	//특정 게시글 상세보기
+	public final static String BOARD_SELECCT_ALL = "select * from board order by cate asc";	//전체 게시글 불러오기 (관리자 기능)
+	public final static String BOARD_INSERT = "insert into board values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	//게시글 등록 (관리자 기능)
+	public final static String BOARD_UPDATE = "update board set btitle=?, bcontent=?, baddress=?, btel=?, bpic1=?, bpic2=?, bpic3=?, bpic4=?, cate=? where bno=?";	//게시글 수정 (관리자 기능)
+	public final static String BOARD_DELETE = "delete from board where bno=?";	//게시글 삭제 (관리자 기능)
+	
+	
+	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName(driver);
 		Connection con = DriverManager.getConnection(url, user, pass);
