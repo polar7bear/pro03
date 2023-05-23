@@ -23,7 +23,7 @@
   <section class="section">
     <div class="container">
 	<h2 class="title">회원가입</h2>
-	<form name="frm1" id="frm1" action="${path1 }/AddUserCtrl.do" method="post" onsubmit="return joinCheck(this)">
+	<form name="frm1" id="frm1" action="${path1 }/SignUpPro.do" method="post" onsubmit="return joinCheck(this)">
 		<table class="table">
 			<tbody>
 				<tr>
@@ -60,14 +60,6 @@
 					<td><input type="text" name="name" id="name" placeholder="이름 입력" class="input" required /></td>
 				</tr>
 				<tr>
-					<th>이메일</th>
-					<td><input type="email" name="email" id="email" placeholder="이메일 입력" class="input" required></td>
-				</tr>
-				<tr>
-					<th>생년월일</th>
-					<td><input type="date" name="birth" id="birth" placeholder="생년월일 입력" class="input" required></td>
-				</tr>
-				<tr>
 					<th>연락처</th>
 					<td><input type="tel" name="tel" id="tel" maxlength="11" placeholder="전화번호 숫자만 입력 00000000000" class="input" required></td>
 				</tr>
@@ -84,7 +76,7 @@
 		<div class="btn-group">
 			<input type="submit" name="submit-btn" class="button button-info" value="회원가입">
 			<input type="reset" name="reset-btn" class="button button-info" value="취소">
-			<a href="<%=request.getContextPath() %>/user/login.jsp" class="button button-danger">로그인</a>
+			<a href="<%=request.getContextPath() %>/Login.do" class="button button-danger">로그인</a>
 		</div>
 	</form>	
 	<script>
@@ -108,7 +100,7 @@
 		} 
 		var params = {	id : $("#id").val()	} 
 		$.ajax({
-			url:"${path1 }/IdCheckCtrl.do",	
+			url:"${path1 }/IdCheck.do",	
 			type:"post",		
 			dataType:"json",	
 			data:params,		
@@ -161,6 +153,6 @@
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </div>
 </section>
-<%@ include file="../footer.jsp" %>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>

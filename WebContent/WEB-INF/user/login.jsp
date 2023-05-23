@@ -21,7 +21,7 @@
   <section class="section">
     <div class="container">
 	<h2 class="title">로그인</h2>
-	<form name="frm1" id="frm1" action="${path1 }/UserLoginCtrl.do" method="post" onsubmit="return joinCheck(this)">
+	<form name="frm1" id="frm1" action="${path1 }/LoginPro.do" method="post">
 		<table class="table">
 			<tbody>
 				<tr>
@@ -49,13 +49,13 @@
 		<div class="btn-group">
 			<input type="submit" name="submit-btn" class="button button-info" value="로그인">
 			<input type="reset" name="reset-btn" class="button button-info" value="취소">
-			<a href="<%=request.getContextPath() %>/signup.jsp" class="button button-danger">회원가입</a>
+			<a href="<%=request.getContextPath() %>/Terms.do" class="button button-danger">회원가입</a>
 		</div>
 	</form>	
 	<script>
 	</script>
 </div>
 </section>
-<%@ include file="../footer.jsp" %>
+<%@ include file="../../footer.jsp" %>
 </body>
 </html>

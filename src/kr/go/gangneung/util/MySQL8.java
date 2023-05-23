@@ -17,6 +17,7 @@ public class MySQL8 {
 	public final static String USER_JOIN = "insert into user values(?, ?, ?, ?, ?, default);";	//회원가입
 	public final static String USER_LOGIN = "select * from user where id=?";	//로그인
 	public final static String USER_UPDATE = "update user set pw=?, name=?, tel=?, address=? where id=?"; //회원 정보수정
+	public final static String USER_UPDATE2 = "update user set name=?, tel=?, address=? where id=?";
 	public final static String USER_SELECT_ONE = "select * from user where id=?"; //마이페이지, 회원 한명의 상세정보
 	public final static String USER_DELETE = "delete from user where id=?";	//유저 회원 탈퇴
 	

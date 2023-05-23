@@ -114,6 +114,24 @@ public class UserDAO {
 		return cnt;
 	}
 	
+	public int userUpdate2(User user){
+		int cnt = 0;
+		try{
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.USER_UPDATE2);
+			pstmt.setString(1, user.getName());
+			pstmt.setString(2, user.getTel());
+			pstmt.setString(3, user.getAddress());
+			pstmt.setString(4, user.getId());
+			cnt = pstmt.executeUpdate();
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			MySQL8.close(pstmt, con);
+		}
+		return cnt;
+	}
+	
 	//회원탈퇴
 	public int userDelete(String id){
 		int cnt = 0;
@@ -126,6 +144,24 @@ public class UserDAO {
 			e.printStackTrace();
 		} finally{
 			MySQL8.close(pstmt, con);
+		}
+		return cnt;
+	}
+	
+	//회원가입 아이디 중복확인
+	public int idCheck(String id){
+		int cnt = 0;
+		try{
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.USER_LOGIN);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){ cnt = 1; }
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			MySQL8.close(rs, pstmt, con);
 		}
 		return cnt;
 	}
