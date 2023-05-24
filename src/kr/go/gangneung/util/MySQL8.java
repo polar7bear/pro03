@@ -36,7 +36,8 @@ public class MySQL8 {
 	public final static String BOARD_SELECT_CATENAME = "select * from category where cate=?";
 	public final static String BOARD_SELECT_CATEGROUP = "select * from board where cate like '?%';"; //카테고리 대분류별 게시글 목록 불러오기
 	public final static String BOARD_SELECT_ONE = "select * from board where bno=?";	//특정 게시글 상세보기
-	public final static String BOARD_SELECCT_ALL = "select * from board order by cate asc";	//전체 게시글 불러오기 (관리자 기능)
+	public final static String BOARD_SELECT_ALL = "select * from board order by cate asc";	//전체 게시글 불러오기 (관리자 기능)
+	public final static String BOARD_SELECT_LIST = "select bno, btitle, cate from board order by cate asc";	//전체 게시글 리스트 불러오기(관리자 기능, 글번호랑 제목과 카테번호만)
 	public final static String BOARD_INSERT = "insert into board values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	//게시글 등록 (관리자 기능)
 	public final static String BOARD_UPDATE = "update board set btitle=?, bcontent=?, baddress=?, btel=?, bpic1=?, bpic2=?, bpic3=?, bpic4=?, cate=? where bno=?";	//게시글 수정 (관리자 기능)
 	public final static String BOARD_DELETE = "delete from board where bno=?";	//게시글 삭제 (관리자 기능)

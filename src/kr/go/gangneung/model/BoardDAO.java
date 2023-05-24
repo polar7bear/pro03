@@ -133,7 +133,7 @@ public class BoardDAO {
 		ArrayList<Board> bList = new ArrayList<Board>();
 		try{
 			con = MySQL8.getConnection();
-			pstmt = con.prepareStatement(MySQL8.BOARD_SELECCT_ALL);
+			pstmt = con.prepareStatement(MySQL8.BOARD_SELECT_ALL);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
@@ -147,6 +147,29 @@ public class BoardDAO {
 				board.setBpic2(rs.getString("bpic2"));
 				board.setBpic3(rs.getString("bpic3"));
 				board.setBpic4(rs.getString("bpic4"));
+				board.setCate(rs.getString("cate"));
+				bList.add(board);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			MySQL8.close(rs, pstmt, con);
+		}
+		return bList;
+	}
+	
+	//게시글 리스트 불러오기 (관리자 기능) 단, 글번호와 카테고리 번호만
+	public ArrayList<Board> boardList(){
+		ArrayList<Board> bList = new ArrayList<Board>();
+		try{
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.BOARD_SELECT_LIST);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				Board board = new Board();
+				board.setBno(rs.getInt("bno"));
+				board.setBtitle(rs.getString("btitle"));
 				board.setCate(rs.getString("cate"));
 				bList.add(board);
 			}

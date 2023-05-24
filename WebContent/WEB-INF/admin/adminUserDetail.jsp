@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <c:set var="path1" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
@@ -7,15 +9,14 @@
 <head>
 <jsp:include page="/head.jsp" />
 <meta charset="UTF-8">
-<title>강릉 문화관광 - 내 정보</title>
+<title>ADMIN - 회원 상세</title>
 <style>
 </style>
 </head>
 <body>
 <jsp:include page="/header.jsp" />
-<div class="container">
-	<section class="section">
-	<h2 class="title">MY INFO</h2>
+	<div class="container">
+	<h2>${msg }</h2>
 		<table class="table">
 			<tbody>
 				<tr>
@@ -43,17 +44,14 @@
 					<td>${user.regdate }</td>
 				</tr>
 				<tr>
-					<td colspan="2">
-						<a href="${path1 }/UserUpdate.do?id=${user.id }" class="button is-link is-inverted">정보 수정</a>
-						<a href="${path1 }/UserDelete.do?id=${user.id }" class="button is-danger is-inverted">회원 탈퇴</a>
-						<a href="javascript:history.go(-1)" class="button is-primary is-inverted">뒤로 가기</a>
+					<td>
+						<a href="${path1 }/AdminUserDelete.do?id=${user.id }">회원 탈퇴</a>
+						<a href="${path1 }/UserList.do">회원목록 보기</a>
 					</td>
 				</tr>
 			</tbody>
 		</table>
-	</section>
-</div>
-
+	</div>
 <jsp:include page="/footer.jsp" />
 </body>
 </html>

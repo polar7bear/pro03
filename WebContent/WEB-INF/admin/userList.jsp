@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="/head.jsp" />
 <meta charset="UTF-8">
 <title>ADMIN - 회원 관리</title>
 <style>
@@ -41,11 +42,6 @@
 			</c:if>	
 		</tbody>
 	</table>
-	<c:if test="${sid=='admin' }">
-	<div class="btn-group">
-			<a href="${path1 }/NoticeInsert.do" class="btn btn-primary">글 등록</a>
-	</div>
-	</c:if>
 </div>
 <jsp:include page="/footer.jsp" />
 </body>
