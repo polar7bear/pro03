@@ -28,7 +28,7 @@ public class UserUpdateProCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String key = "03b";
+		String key = "%03b";
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 		String hpw = request.getParameter("hpw");

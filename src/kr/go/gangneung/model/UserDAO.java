@@ -3,6 +3,7 @@ package kr.go.gangneung.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 import com.crypto.util.AES256;
 
@@ -164,5 +165,29 @@ public class UserDAO {
 			MySQL8.close(rs, pstmt, con);
 		}
 		return cnt;
+	}
+	
+	//유저 목록 불러오기
+	public ArrayList<User> userList(){
+		ArrayList<User> userList = new ArrayList<User>();
+		try{
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.USER_SELECT_LIST);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+				User user = new User();
+				user.setId(rs.getString("id"));
+				user.setName(rs.getString("name"));
+				user.setTel(rs.getString("tel"));
+				user.setRegdate(rs.getString("regdate"));
+				userList.add(user);
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			MySQL8.close(rs, pstmt, con);
+		}
+		return userList;
 	}
 }

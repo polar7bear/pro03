@@ -25,7 +25,6 @@ public class NoticeDAO {
 				Notice notice = new Notice();
 				notice.setNo(rs.getInt("no"));
 				notice.setTitle(rs.getString("title"));
-				notice.setContent(rs.getString("content"));
 				notice.setRegdate(rs.getString("regdate"));
 				notice.setVisited(rs.getInt("visited"));
 				notice.setFile1(rs.getString("file1"));

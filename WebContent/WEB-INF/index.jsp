@@ -11,13 +11,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <jsp:include page="/head.jsp" />
-    <title>메인 페이지</title>
+    <title>강릉 문화관광에 오신것을 환영합니다.</title>
 </head>
 <body>
   	<jsp:include page="${path1 }/header.jsp" />
-	<h2>메인 화면 페이지 입니다.
-	
-	</h2>
+	<div class="container.is-fullhd">
+		<div class="content">
+			<img class="mainImg" src="img/main_1.jpg" alt="메인이미지1">
+		</div>
+	</div>
 	<jsp:include page="${path1 }/footer.jsp" />
 </body>
 </html>

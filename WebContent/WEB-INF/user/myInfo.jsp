@@ -7,7 +7,7 @@
 <head>
 <jsp:include page="/head.jsp" />
 <meta charset="UTF-8">
-<title>내 정보</title>
+<title>강릉 문화관광 - 내 정보</title>
 <style>
 </style>
 </head>

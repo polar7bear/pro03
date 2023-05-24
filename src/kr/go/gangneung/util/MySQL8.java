@@ -20,13 +20,14 @@ public class MySQL8 {
 	public final static String USER_UPDATE2 = "update user set name=?, tel=?, address=? where id=?";
 	public final static String USER_SELECT_ONE = "select * from user where id=?"; //마이페이지, 회원 한명의 상세정보
 	public final static String USER_DELETE = "delete from user where id=?";	//유저 회원 탈퇴
+	public final static String USER_SELECT_LIST = "select id, name, tel, regdate from user order by regdate desc";	//유저 목록 보기 (관리자 기능)
 	
 	//공지사항 기능
 	public final static String NOTICE_INSERT = "insert into notice(no, title, content, regdate, visited, file1) values(default, ?, ?, default, default, ?);";	//공지사항 글쓰기(관리자 기능)
 	public final static String NOTICE_UPDATE = "update notice set title=?, content=?, file1=?, editdate=now() where no=?";	//공지사항 글 수정(관리자 기능) (첨부파일有)
 	public final static String NOTICE_UPDATE2 = "update notice set title=?, content=? editdate=now() where no=?";	//공지사항 글 수정 (관리자 기능) (첨부파일無)
 	public final static String NOTICE_DELETE = "delete from notice where no=?";	//공지사항 글 삭제(관리자 기능)
-	public final static String NOTICE_SELECT_ALL = "select no, title, content, regdate, visited, file1 from notice order by no desc";	//공지사항 목록 보기
+	public final static String NOTICE_SELECT_ALL = "select no, title, regdate, visited, file1 from notice order by no desc";	//공지사항 목록 보기 (내용제외)
 	public final static String NOTICE_SELECT_ONE = "select * from notice where no=?";	//공지사항 상세보기
 	public final static String NOTICE_UPDATE_VISITED = "update notice set visited=visited+1 where no=?";	//공지사항 조회수 기능
 

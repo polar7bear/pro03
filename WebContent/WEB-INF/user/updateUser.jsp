@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<c:set var="path1" value="<%=request.getContextPath() %>" />
 <!DOCTYPE html>
 <html>
 <head>
 <jsp:include page="/head.jsp" />
 <meta charset="UTF-8">
-<title>내 정보 수정</title>
+<title>강릉 문화관광 - 내 정보 수정</title>
 <style>
 .input { width:500px; }
 .pw_pt { width:630px; }
@@ -20,7 +22,7 @@
 <div class="field container">
 	<section class="section">
 		<h2 class="title">정보 수정</h2>
-		<form action="${path0 }/UserUpdatePro.do" method="post">
+		<form action="${path1 }/UserUpdatePro.do" method="post">
 			<div class="field">
 				<label class="label">ID <em class="cant">＊</em></label>
 			  	<div class="control has-icons-left has-icons-right">
@@ -72,7 +74,7 @@
 				<input class="input is-info" type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" /><br>
 				<input class="input is-info" type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" /><br>
 				<input class="input is-info" type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="form-control">
-				<button id="post_btn" onclick="findAddr()" class="button is-link is-light">우편번호 검색</button>
+				<button type="button" onclick="findAddr()" class="button is-link is-light">우편번호 검색</button>
 			</div>
 			<div class="field">
 				<label class="label">가입일 <em class="cant">＊</em></label>
@@ -80,16 +82,8 @@
 			    <input class="input is-info" type="text" name="regdate" id="regdate" value="${user.regdate }" readonly>
 				</div>
 			</div>
-			<table>
-				<tfoot>
-					<tr>
-						<td colspan="1">
-							<input type="submit" value="회원정보수정" class="button is-primary is-inverted"/>
-							<a href="javascript:history.go(-1)" class="button is-link is-inverted">뒤로 가기</a>
-						</td>
-					</tr>
-				</tfoot>
-			</table>
+			<input type="submit" value="회원정보수정" class="button is-primary is-inverted"/>
+			<a href="javascript:history.go(-1)" class="button is-link is-inverted">뒤로 가기</a>
 		</form>
 	</section>
 </div>

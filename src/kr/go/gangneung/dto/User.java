@@ -5,6 +5,7 @@ import java.util.Date;
 public class User {
 	private String id;
 	private String pw;
+	private String hpw;
 	private String name;
 	private String tel;
 	private String address;
@@ -13,6 +14,12 @@ public class User {
 	public User(){
 		Date now = new Date();
 		this.regdate = now.toString();
+	}
+	public String getHpw() {
+		return hpw;
+	}
+	public void setHpw(String hpw) {
+		this.hpw = hpw;
 	}
 	public String getId() {
 		return id;

@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <jsp:include page="/head.jsp" />
-	<title>약관 동의</title>
+	<title>강릉 문화관광 - 약관 동의</title>
 	<style>
 	</style>
 </head>
