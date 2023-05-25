@@ -34,7 +34,9 @@ public class MySQL8 {
 	//게시판 기능
 	public final static String BOARD_SELECT_CATE = "select * from board where cate=?";	//카테고리 소분류별 게시글 목록 불러오기
 	public final static String BOARD_SELECT_CATENAME = "select * from category where cate=?";
-	public final static String BOARD_SELECT_CATEGROUP = "select * from board where cate like '?%';"; //카테고리 대분류별 게시글 목록 불러오기
+	public final static String BOARD_SELECT_CATEGROUP = "select * from board where cate like '?%'"; //카테고리 대분류별 게시글 목록 불러오기
+	public final static String FIRST_CATEGORY_SELECT = "select distinct substr(cate,1,2) as ct, categroup from category group by substr(cate,1,2), categroup order by ct";
+	public final static String SECOND_CATEGORY_SELECT = "select cate, catename from category order by cate";
 	public final static String BOARD_SELECT_ONE = "select * from board where bno=?";	//특정 게시글 상세보기
 	public final static String BOARD_SELECT_ALL = "select * from board order by cate asc";	//전체 게시글 불러오기 (관리자 기능)
 	public final static String BOARD_SELECT_LIST = "select bno, btitle, cate from board order by cate asc";	//전체 게시글 리스트 불러오기(관리자 기능, 글번호랑 제목과 카테번호만)

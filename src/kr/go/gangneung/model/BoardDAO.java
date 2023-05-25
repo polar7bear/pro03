@@ -3,10 +3,13 @@ package kr.go.gangneung.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 import kr.go.gangneung.dto.Board;
+import kr.go.gangneung.dto.Category;
 import kr.go.gangneung.util.MySQL8;
 
 public class BoardDAO {
@@ -127,6 +130,51 @@ public class BoardDAO {
 		}
 		return bList;
 	}
+	
+	public ArrayList<Category> getFirstCategoryList(){
+		ArrayList<Category> cateList = new ArrayList<>();
+		try{
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.FIRST_CATEGORY_SELECT);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Category cate = new Category();
+				cate.setCt(rs.getString("ct"));
+				cate.setCateGroup(rs.getString("cateGroup"));
+				cateList.add(cate);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			MySQL8.close(rs, pstmt, con);
+		}
+		return cateList;
+	}
+	
+	public ArrayList<Category> getSecondCategoryList(){
+		ArrayList<Category> cateList = new ArrayList<Category>();
+		try {
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.SECOND_CATEGORY_SELECT);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Category cate = new Category();
+				cate.setCate(rs.getString("cate"));
+				cate.setCateName(rs.getString("cateName"));
+				cateList.add(cate);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			MySQL8.close(rs, pstmt, con);
+		}
+		return cateList;
+	}
+
 	
 	//전체 게시글 불러오기 (관리자 기능)
 	public ArrayList<Board> boardAll(){
