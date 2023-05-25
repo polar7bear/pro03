@@ -36,15 +36,9 @@
 				</div>
 					소분류 :
 				<div class="select is-info">
-					 
 					<select id="cate" name="cate" class="form-control">
-					<c:if test="${cate1.ct=='a0' }">
-						<c:forEach items="${cateList2 }" var="cate2">
-						<option value="${cate2.cateName }">${cate2.cateName }</option>
-						</c:forEach>
-					</c:if>
+								<option value="">선택안함</option>
 					</select><br>
-					
 				</div>
 				</td>
 			</tr>
@@ -86,8 +80,8 @@
 </div>
 <script>
 		$(document).ready(function(){
-			$("#bcontent").click(function(){
-				if($(this).text()=="1000글자 미만 작성"){
+			$("#pd_comment").click(function(){
+				if($(this).text()=="500자 이내"){
 					$(this).text("");
 				}
 			});
@@ -103,6 +97,25 @@
 					$("#cate1").focus();
 					return;
 				}
+				var params = {cate1:$("#cate1").val()}
+				console.log(params);
+				$.ajax({
+					url:"${path1 }/CategoryLoading.do",
+					type:"post",
+					dataType:"json",
+					encType:"UTF-8",
+					data:params,
+					success:function(result){
+						console.log(result);
+						var ctList = result.ctList;
+						var msg = result.msg;
+						$("#cate").empty();
+						$("#cate").append("<option value=''>선택안함</option>");
+						for(var c in ctList){
+							$("#cate").append("<option value='"+ctList[c]["cate"]+"'>"+ctList[c]["cateName"]+"</option>");
+						}
+					}
+				})
 			})
 		})
 </script>

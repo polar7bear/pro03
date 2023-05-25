@@ -153,11 +153,12 @@ public class BoardDAO {
 		return cateList;
 	}
 	
-	public ArrayList<Category> getSecondCategoryList(){
+	public ArrayList<Category> getSecondCategoryList(String ct){
 		ArrayList<Category> cateList = new ArrayList<Category>();
 		try {
 			con = MySQL8.getConnection();
 			pstmt = con.prepareStatement(MySQL8.SECOND_CATEGORY_SELECT);
+			pstmt.setString(1, ct+"%");
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				Category cate = new Category();

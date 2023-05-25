@@ -22,9 +22,7 @@ public class BoardInsertCtrl extends HttpServlet {
 		request.setAttribute("msg", msg);
 		BoardDAO dao = new BoardDAO();
 		ArrayList<Category> cateList = dao.getFirstCategoryList();
-		ArrayList<Category> cateList2 = dao.getSecondCategoryList();
 		request.setAttribute("cateList", cateList);
-		request.setAttribute("cateList2", cateList2);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/boardInsert.jsp");
 		view.forward(request, response);
