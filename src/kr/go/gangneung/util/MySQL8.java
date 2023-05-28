@@ -11,7 +11,7 @@ public class MySQL8 {
 	static String driver = "com.mysql.cj.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/gangneung?serverTimezone=Asia/Seoul";
 	static String user = "root";
-	static String pass = "1234";
+	static String pass = "root1234";
 	
 	//회원기능
 	public final static String USER_JOIN = "insert into user values(?, ?, ?, ?, ?, default);";	//회원가입
@@ -40,7 +40,7 @@ public class MySQL8 {
 	public final static String BOARD_SELECT_ONE = "select * from board where bno=?";	//특정 게시글 상세보기
 	public final static String BOARD_SELECT_ALL = "select * from board order by cate asc";	//전체 게시글 불러오기 (관리자 기능)
 	public final static String BOARD_SELECT_LIST = "select bno, btitle, cate from board order by cate asc";	//전체 게시글 리스트 불러오기(관리자 기능, 글번호랑 제목과 카테번호만)
-	public final static String BOARD_INSERT = "insert into board values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	//게시글 등록 (관리자 기능)
+	public final static String BOARD_INSERT = "insert into board values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";	//게시글 등록 (관리자 기능)
 	public final static String BOARD_UPDATE = "update board set btitle=?, bcontent=?, baddress=?, btel=?, bpic1=?, bpic2=?, bpic3=?, bpic4=?, cate=? where bno=?";	//게시글 수정 (관리자 기능)
 	public final static String BOARD_DELETE = "delete from board where bno=?";	//게시글 삭제 (관리자 기능)
 	

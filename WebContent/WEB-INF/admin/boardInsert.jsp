@@ -17,6 +17,7 @@
 <body>
 <div class="container">
 <jsp:include page="/header.jsp" />
+<form class="frm1" action="BoardInsertPro.do" method="post" enctype="multipart/form-data">
 	<table class="table">
 		<tbody>
 			<tr>
@@ -67,15 +68,30 @@
 				</td>
 			</tr>
 			<tr>
+				<th>지도 좌표 설정</th>
+				<td colspan="2">
+				<input type="number" id="latitude" name="latitude" title="위도를 입력해주세요" placeholder="위도를 입력해주세요">
+				<input type="number" id="longitude" name="longitude" title="위도를 입력해주세요" placeholder="도를 입력해주세요">
+				</td>
+			</tr>
+			<tr>
 				<th><label for="pic1">게시글 이미지 첨부</label></th>
 				<td>
 					이미지 1 : <p id="picAttac1"></p><input type="file" accept="image/*" name="bpic1" id="bpic1" class="form-control file"><br>
 					이미지 2 : <p id="picAttac2"></p><input type="file" accept="image/*" name="bpic2" id="bpic2" class="form-control file"><br>
 					이미지 3 : <p id="picAttac3"></p><input type="file" accept="image/*" name="bpic3" id="bpic3" class="form-control file">
+					이미지 4 : <p id="picAttac4"></p><input type="file" accept="image/*" name="bpic4" id="bpic4" class="form-control file">
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" name="submit-btn" class="button button-info" value="글 등록">
+					<a href="${path1 }/BoardList.do" class="button button-info">게시글 목록</a>
 				</td>
 			</tr>
 		</tbody>
 	</table>
+</form>
 <jsp:include page="/footer.jsp" />
 </div>
 <script>

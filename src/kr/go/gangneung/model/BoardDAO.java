@@ -207,7 +207,7 @@ public class BoardDAO {
 		return bList;
 	}
 	
-	//게시글 리스트 불러오기 (관리자 기능) 단, 글번호와 카테고리 번호만
+	//게시글 리스트 불러오기 (관리자 기능) 단, 글번호와 제목, 카테고리 번호만
 	public ArrayList<Board> boardList(){
 		ArrayList<Board> bList = new ArrayList<Board>();
 		try{
@@ -245,6 +245,8 @@ public class BoardDAO {
 			pstmt.setString(7, board.getBpic3());
 			pstmt.setString(8, board.getBpic4());
 			pstmt.setString(9, board.getCate());
+			pstmt.setInt(10, board.getLatitude());
+			pstmt.setInt(11, board.getLongitude());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e){
 			e.printStackTrace();
