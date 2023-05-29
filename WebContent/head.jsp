@@ -16,7 +16,7 @@
 <script type="text/javascript" src="http://s1.daumcdn.net/svc/original/U03/cssjs/jquery/jquery-1.11.0.js"></script>
 <script type="text/javascript" src="http://s1.daumcdn.net/svc/original/U0301/cssjs/JSON-js/fc535e9cc8/json2.min.js"></script>
 <style>
-/* body { background:white; } */
+body { background:white; }
 body, html { font-family: 'Noto Sans KR', sans-serif; }
 .table { min-width:960px; }
 #logo2 { display:block; width:73px; height:67px; background-color:white; background-image:url("${path0 }/data/logo.png");

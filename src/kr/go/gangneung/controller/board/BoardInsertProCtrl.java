@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-
 import kr.go.gangneung.dto.Board;
 import kr.go.gangneung.model.BoardDAO;
+
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 @WebServlet("/BoardInsertPro.do")
 public class BoardInsertProCtrl extends HttpServlet {
@@ -25,7 +25,7 @@ public class BoardInsertProCtrl extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		String savePath = "/product/img";	//업로드할 디렉토리
+		String savePath = "/img/board";	//업로드할 디렉토리
 		int uploadFileSizeLimit = 10 * 1024 * 1024;	//업로드할 파일 크기 제한
 		String encType = "UTF-8";		//멀티파트 데이터의 인코딩 설정
 		ServletContext context = getServletContext();	//현재 서블릿(프로젝트)의 위치 저장
@@ -34,8 +34,8 @@ public class BoardInsertProCtrl extends HttpServlet {
 		System.out.println("서버 상의 실제 업로드되는 디렉토리 : "+uploadFilePath);
 		
 		int n = 0;
-		String[] fileName = new String[3];
-		String[] oriFileName = new String[3];
+		String[] fileName = new String[4];
+		String[] oriFileName = new String[4];
 		BoardDAO dao = new BoardDAO();
 		Board board = new Board();
 		
@@ -61,24 +61,24 @@ public class BoardInsertProCtrl extends HttpServlet {
 			if (fileName[0] == null) { // 파일이 업로드 되지 않았을때
 				System.out.print("파일1 업로드 실패");
 			} else {
-				board.setBpic1("img/"+fileName[0]);
+				board.setBpic1("board/"+fileName[0]);
 			}
 			
 			if (fileName[1] == null) { // 파일이 업로드 되지 않았을때
 				System.out.print("파일2 업로드 실패");
 			} else {
-				board.setBpic2("img/"+fileName[1]);
+				board.setBpic2("board/"+fileName[1]);
 			}
 
 			if (fileName[2] == null) { // 파일이 업로드 되지 않았을때
 				System.out.print("파일3 업로드 실패");
 			} else {
-				board.setBpic3("img/"+fileName[2]);
+				board.setBpic3("board/"+fileName[2]);
 			}
 			if (fileName[3] == null) { // 파일이 업로드 되지 않았을때
 				System.out.print("파일4 업로드 실패");
 			} else {
-				board.setBpic4("img/"+fileName[3]);
+				board.setBpic4("board/"+fileName[3]);
 			}
 			board.setBtitle(multi.getParameter("btitle"));
 			board.setBcontent(multi.getParameter("bcontent"));
@@ -89,9 +89,8 @@ public class BoardInsertProCtrl extends HttpServlet {
 			board.setLongitude(Integer.parseInt(multi.getParameter("longitude")));
 			
 		} catch (Exception e) {
-			System.out.print("예외 발생 : " + e);
+			System.out.println("예외 발생 : " + e);
 		}
-		
 		int cnt = dao.boardInsert(board);
 		if(cnt==0){ //상품 등록 실패
 			String msg = "상품을 등록하지 못했습니다.";

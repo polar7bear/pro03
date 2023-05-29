@@ -71,7 +71,7 @@
 				<th>지도 좌표 설정</th>
 				<td colspan="2">
 				<input type="number" id="latitude" name="latitude" title="위도를 입력해주세요" placeholder="위도를 입력해주세요">
-				<input type="number" id="longitude" name="longitude" title="위도를 입력해주세요" placeholder="도를 입력해주세요">
+				<input type="number" id="longitude" name="longitude" title="경도를 입력해주세요" placeholder="경도를 입력해주세요">
 				</td>
 			</tr>
 			<tr>
