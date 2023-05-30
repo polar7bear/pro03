@@ -47,6 +47,37 @@ public class BoardDAO {
 		return board;
 	}
 	
+	//게시글 1개 모든정보 조회
+	public Board boardSelectOne(int bno){
+		Board board = new Board();
+		try{
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.BOARD_SELECT_ONE);
+			pstmt.setInt(1, bno);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				board.setBno(rs.getInt("bno"));
+				board.setBtitle(rs.getString("btitle"));
+				board.setBcontent(rs.getString("bcontent"));
+				board.setBaddress(rs.getString("baddress"));
+				board.setBtel(rs.getString("btel"));
+				board.setBpic1(rs.getString("bpic1"));
+				board.setBpic2(rs.getString("bpic2"));
+				board.setBpic3(rs.getString("bpic3"));
+				board.setBpic4(rs.getString("bpic4"));
+				board.setCate(rs.getString("cate"));
+				board.setLatitude(rs.getInt("latitude"));
+				board.setLongitude(rs.getInt("longitude"));
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally{
+			MySQL8.close(rs, pstmt, con);
+		}
+		return board;
+	}
+	
 	//카테고리 소분류별 게시글 목록 불러오기
 	public ArrayList<Board> getCateBoardList(String cate){
 		ArrayList<Board> bList = new ArrayList<Board>();

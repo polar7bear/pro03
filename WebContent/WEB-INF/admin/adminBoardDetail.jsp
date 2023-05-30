@@ -56,6 +56,13 @@
 				<th>카테고리</th>
 				<td>${board.cate }</td>
 			</tr>
+			<tr>
+				<td colspan="3">
+					<a href="${path1 }/BoardList.do" class="button is-link is-inverted">게시판 목록</a>
+					<a href="${path1 }/BoardUpdate.do?bno=${board.bno }" class="button is-success is-inverted">게시판 수정</a>
+					<a href="${path1 }/BoardDelete.do?bno=${board.bno }" class="button is-danger is-inverted">게시판 삭제</a>
+				</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
