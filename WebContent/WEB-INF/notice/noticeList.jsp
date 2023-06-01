@@ -25,7 +25,7 @@
 			<c:forEach var="notice" items="${notice }" varStatus="status">
 			<tr>
 				<td>${status.count }</td>
-				<td><a href="${path1 }/GetNotice.do?no=${notice.no }">${notice.title }</a></td>
+				<td><a href="${path1 }/NoticeDetail.do?no=${notice.no }">${notice.title }</a></td>
 				<td>
 					<fmt:parseDate value="${notice.regdate }" var="regdate" pattern="yyyy-MM-dd HH:mm:ss" />
 					<fmt:formatDate value="${regdate }" pattern="yyyy년 MM월 dd일" />
@@ -45,7 +45,7 @@
 	</table>
 	<c:if test="${sid=='admin' }">
 	<div class="btn-group">
-			<a href="${path1 }/NoticeInsert.do" class="btn btn-primary">글 등록</a>
+			<a href="${path1 }/NoticeInsert.do" class="button is-primary is-outlined">글 등록</a>
 	</div>
 	</c:if>
 </div>

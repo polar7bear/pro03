@@ -3,7 +3,10 @@ package kr.go.gangneung.model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+
 
 
 import kr.go.gangneung.dto.Notice;
@@ -96,8 +99,35 @@ public class NoticeDAO {
 		return cnt;
 	}
 	
+	public Notice noticeUpdate(int no){
+		Notice notice = new Notice();
+		try {
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.NOTICE_SELECT_ONE);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				notice.setNo(rs.getInt("no"));
+				notice.setTitle(rs.getString("title"));
+				notice.setContent(rs.getString("content"));
+				notice.setFile1(rs.getString("file1"));
+				notice.setRegdate(rs.getString("regdate"));
+				notice.setVisited(rs.getInt("visited"));
+				notice.setEditdate(rs.getString("editdate"));
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		MySQL8.close(rs, pstmt, con);
+		return notice;
+	}
+	
 	//공지사항 글 수정
-	public int noticeUpdate(Notice notice){
+	public int noticeUpdatePro(Notice notice){
 		int cnt = 0;
 		try{
 			con = MySQL8.getConnection();

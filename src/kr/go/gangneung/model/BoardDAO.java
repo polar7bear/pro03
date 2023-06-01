@@ -302,7 +302,9 @@ public class BoardDAO {
 			pstmt.setString(7, board.getBpic3());
 			pstmt.setString(8, board.getBpic4());
 			pstmt.setString(9, board.getCate());
-			pstmt.setInt(10, board.getBno());
+			pstmt.setInt(10, board.getLatitude());
+			pstmt.setInt(11, board.getLongitude());
+			pstmt.setInt(12, board.getBno());
 			cnt = pstmt.executeUpdate();
 		} catch(Exception e){
 			e.printStackTrace();

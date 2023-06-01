@@ -4,6 +4,8 @@ import java.io.IOException;
 
 
 
+import java.util.ArrayList;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +17,7 @@ import kr.go.gangneung.model.BoardDAO;
 
 
 import kr.go.gangneung.dto.Board;
+import kr.go.gangneung.dto.Category;
 
 @WebServlet("/BoardUpdate.do")
 public class BoardUpdateCtrl extends HttpServlet {
@@ -26,6 +29,9 @@ public class BoardUpdateCtrl extends HttpServlet {
 		BoardDAO dao = new BoardDAO();
 		
 		board = dao.boardSelectOne(bno);
+		
+		ArrayList<Category> cateList = dao.getFirstCategoryList();
+		request.setAttribute("cateList", cateList);
 		
 		request.setAttribute("board", board);
 		
