@@ -42,7 +42,9 @@
 		</tr>
 		<tr>
 			<th>첨부파일</th>
+			<c:if test="${notice.file1!=null }">
 			<td><a href="${notice.file1 }" download>다운로드</a></td>
+			</c:if>
 		</tr>
 		<tr>
 			<th>조회수</th>
@@ -51,7 +53,7 @@
 		<tr>
 			<td colspan="3">
 				<a href="${path1 }/NoticeList.do" class="button is-link is-light">공지사항 목록</a>
-				<a href="${path1 }/NoticeUpdate.do?no=${notice.no }" class="button is-link is-light">수정</a>
+				<a href="${path1 }/NoticeUpdate.do?no=${notice.no }&file1=${notice.file1 }" class="button is-link is-light">수정</a>
 				<a href="${path1 }/NoticeDelete.do?no=${notice.no }" class="button is-danger is-light">삭제</a>
 			</td>
 		</tr>

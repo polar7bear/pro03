@@ -21,17 +21,15 @@ public class NoticeUpdateCtrl extends HttpServlet {
 		int no = Integer.parseInt(request.getParameter("no"));
 		NoticeDAO ndao = new NoticeDAO();
 		Notice notice = new Notice();
+		String file1 = request.getParameter("file1");
 		
-		notice = ndao.noticeUpdate(no);
+		if(file1==null) {
+			notice = ndao.noticeUpdate2(no);
+		} else {
+			notice = ndao.noticeUpdate(no);
+		}
 		
-		//한글 파일 이름 인코딩 처리
-		String file1 = notice.getFile1().substring(5);
-		String filepath1 = notice.getFile1().substring(0, 4);
 		
-		file1 = URLEncoder.encode(file1, "UTF-8");
-		
-		request.setAttribute("file1", file1);
-		request.setAttribute("filepath1", filepath1);
 		request.setAttribute("notice", notice);
 		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/notice/noticeUpdate.jsp");

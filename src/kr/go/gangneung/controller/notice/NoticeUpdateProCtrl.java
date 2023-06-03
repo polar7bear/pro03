@@ -35,18 +35,22 @@ public class NoticeUpdateProCtrl extends HttpServlet {
 		int no = 0;
 		String title = "";
 		String content = "";
-		String fileName = "";
-
+		String file1 = "";
+		MultipartRequest multi = new MultipartRequest(request, uploadFilePath, 
+				uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 		try {
-			MultipartRequest multi = new MultipartRequest(request, uploadFilePath, 
-					uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
-			fileName = multi.getFilesystemName("file1"); 
-			if (fileName == null) { 
+			
+			file1 = multi.getFilesystemName("file1"); 
+			if (file1 == null) { 
 				System.out.print("파일 업로드 실패");
 			}  
 			no = Integer.parseInt(multi.getParameter("no"));
 			title = multi.getParameter("title");
 			content = multi.getParameter("content");
+			System.out.println(file1);
+			System.out.println(no);
+			System.out.println(title);
+			System.out.println(content);
 		} catch (Exception e) {
 			System.out.print("예외 발생 : " + e);
 		}
@@ -56,7 +60,7 @@ public class NoticeUpdateProCtrl extends HttpServlet {
 		notice.setNo(no);
 		notice.setTitle(title);
 		notice.setContent(content);
-		notice.setFile1(fileName);
+		notice.setFile1(file1);
 		int cnt = ndao.noticeUpdatePro(notice);
 		if(cnt==0){
 			String msg = "공지사항을 글이 등록되지 못했습니다.";

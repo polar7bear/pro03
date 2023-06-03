@@ -111,9 +111,32 @@ public class NoticeDAO {
 				notice.setTitle(rs.getString("title"));
 				notice.setContent(rs.getString("content"));
 				notice.setFile1(rs.getString("file1"));
-				notice.setRegdate(rs.getString("regdate"));
-				notice.setVisited(rs.getInt("visited"));
-				notice.setEditdate(rs.getString("editdate"));
+
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e){
+			e.printStackTrace();			
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		MySQL8.close(rs, pstmt, con);
+		return notice;
+	}
+	
+	//파일이 없을
+	public Notice noticeUpdate2(int no){
+		Notice notice = new Notice();
+		try {
+			con = MySQL8.getConnection();
+			pstmt = con.prepareStatement(MySQL8.NOTICE_SELECT_ONE);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				notice.setNo(rs.getInt("no"));
+				notice.setTitle(rs.getString("title"));
+				notice.setContent(rs.getString("content"));
+
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

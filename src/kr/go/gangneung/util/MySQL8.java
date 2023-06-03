@@ -11,7 +11,7 @@ public class MySQL8 {
 	static String driver = "com.mysql.cj.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/gangneung?serverTimezone=Asia/Seoul";
 	static String user = "root";
-	static String pass = "1234";
+	static String pass = "root1234";
 	
 	//회원기능
 	public final static String USER_JOIN = "insert into user values(?, ?, ?, ?, ?, default);";	//회원가입
@@ -24,8 +24,8 @@ public class MySQL8 {
 	
 	//공지사항 기능
 	public final static String NOTICE_INSERT = "insert into notice(no, title, content, regdate, visited, file1) values(default, ?, ?, default, default, ?);";	//공지사항 글쓰기(관리자 기능)
-	public final static String NOTICE_UPDATE = "update notice set title=?, content=?, file1=? where no=?";	//공지사항 글 수정(관리자 기능) (첨부파일有)
-	public final static String NOTICE_UPDATE2 = "update notice set title=?, content=? where no=?";	//공지사항 글 수정 (관리자 기능) (첨부파일無)
+	public final static String NOTICE_UPDATE = "update notice set title=?, content=?, file1=?, editdate=default where no=?";	//공지사항 글 수정(관리자 기능) (첨부파일有)
+	public final static String NOTICE_UPDATE2 = "update notice set title=?, content=?, editdate=default where no=?";	//공지사항 글 수정 (관리자 기능) (첨부파일無)
 	public final static String NOTICE_DELETE = "delete from notice where no=?";	//공지사항 글 삭제(관리자 기능)
 	public final static String NOTICE_SELECT_ALL = "select no, title, regdate, visited, file1 from notice order by no desc";	//공지사항 목록 보기 (내용제외)
 	public final static String NOTICE_SELECT_ONE = "select * from notice where no=?";	//공지사항 상세보기
