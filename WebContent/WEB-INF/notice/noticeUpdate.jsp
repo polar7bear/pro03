@@ -24,7 +24,7 @@
 				<th><label for="title">공지사항 제목</label></th>
 				<td>
 				<input value="${notice.title }" class="input is-primary" id="title" name="title" type="text" title="50글자 미만 작성" placeholder="50글자 미만으로 제목을 입력해주세요." maxlength="49" >
-				<input type="hidden" id="no" name="id" value="${notice.no }">
+				<input type="hidden" id="no" name="no" value="${notice.no }">
 				</td>
 			</tr>
 			<tr>

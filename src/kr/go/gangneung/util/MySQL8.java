@@ -11,7 +11,7 @@ public class MySQL8 {
 	static String driver = "com.mysql.cj.jdbc.Driver";
 	static String url = "jdbc:mysql://localhost:3306/gangneung?serverTimezone=Asia/Seoul";
 	static String user = "root";
-	static String pass = "root1234";
+	static String pass = "1234";
 	
 	//회원기능
 	public final static String USER_JOIN = "insert into user values(?, ?, ?, ?, ?, default);";	//회원가입
